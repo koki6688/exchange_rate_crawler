@@ -12,11 +12,12 @@ import com.fasterxml.jackson.core.*;
 
 public class crawler {
 
-    public static JSONArray getRate(String currency) {
+
+    public static JSONArray getRate(String currency, String currencyTitle) {
 // TODO Auto-generated method stub
         String url = "https://www.esunbank.com.tw/bank/Layouts/esunbank/Deposit/DpService.aspx/GetLineChartJson";
         String payload = "{data:{\"Currency\":\"" + currency + "\",\"Currencytype\":\"1\",\"Rangetype\":\"3\"," +
-                "\"Startdate\":\"2018-10-10\",\"Enddate\":\"2018-10-12\",\"CurrencyTitle\":\"美元(USD)\"}}";
+                "\"Startdate\":\"2018-09-10\",\"Enddate\":\"2018-10-12\",\"CurrencyTitle\":\"" + currencyTitle + "\"}}";
 
         try {
             JSONObject jsonobj = new JSONObject(sendPostRequest(url, payload));
