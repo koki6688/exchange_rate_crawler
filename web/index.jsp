@@ -23,17 +23,30 @@
 
 </head>
 <body>
+<%JSONArray result1 = crawler.getRate("USD", "美元(USD)");%>
+<%JSONArray result2 = crawler.getRate("CNY", "人民幣(CNY)");%>
+<%JSONArray result3 = crawler.getRate("EUR", "歐元(EUR)");%>
+<%JSONArray result4 = crawler.getRate("JPY", "日幣(JPY)");%>
+<%JSONArray result5 = crawler.getRate("HKD", "港幣(HKD)");%>
+<%JSONArray result6 = crawler.getRate("AUD", "澳幣(AUD)");%>
 
-<%JSONArray result = crawler.getRate("USD", "美元(USD)");%>
 <script type="text/javascript">
-    const result = JSON.stringify(<%=result%>);
-    const crawler_data = JSON.parse(result);
+    const result1 = JSON.stringify(<%=result1%>);
+    const result2 = JSON.stringify(<%=result2%>);
+    const result3 = JSON.stringify(<%=result3%>);
+    const result4 = JSON.stringify(<%=result4%>);
+    const result5 = JSON.stringify(<%=result5%>);
+    const result6 = JSON.stringify(<%=result6%>);
+
+
+    const crawler_datas = [JSON.parse(result1), JSON.parse(result2), JSON.parse(result3)
+        , JSON.parse(result4), JSON.parse(result5), JSON.parse(result6)];
+
 
     function getPlotData(crawler_data) {
         const time = [];
         const sell_rate = [];
         const buy_rate = [];
-        console.log(crawler_data);
 
         for (let i = 0; i < crawler_data.length; i++) {
             time.push(crawler_data[i].Time);
@@ -167,37 +180,36 @@
 </body>
 <script>
 
-    const data = {
-        labels: getPlotData(crawler_data)[0],
-        datasets: [
-            {
-                label: "賣匯",
-                pointHoverBorderColor: "#ff7224",
-                pointHoverBackgroundColor: "#ce27ff",
-                pointBorderColor: "#ff7224",
-                pointBackgroundColor: "#ff7224",
-                borderColor: "#ff7224",
-                data: getPlotData(crawler_data)[1]
-            },
-            {
-                label: "買匯",
-                pointHoverBorderColor: "#15ff0f",
-                pointHoverBackgroundColor: "#ce27ff",
-                pointBorderColor: "#15ff0f",
-                pointBackgroundColor: "#15ff0f",
-                borderColor: "#15ff0f",
-                data: getPlotData(crawler_data)[2]
-            }
-        ]
-    };
-
     for (let i = 1; i < 7; i++) {
         // Get the context of the canvas element we want to select
         const ctx = document.getElementById("myChart" + i).getContext("2d");
         // Instantiate a new chart using 'data' (defined below)
+        console.log(getPlotData(crawler_datas[i-1]));
         const myLineChart = new Chart(ctx, {
             type: 'line',
-            data: data
+            data: {
+                labels: getPlotData(crawler_datas[i-1])[0],
+                datasets: [
+                    {
+                        label: "賣匯",
+                        pointHoverBorderColor: "#ff7224",
+                        pointHoverBackgroundColor: "#ce27ff",
+                        pointBorderColor: "#ff7224",
+                        pointBackgroundColor: "#ff7224",
+                        borderColor: "#ff7224",
+                        data: getPlotData(crawler_datas[i-1])[1]
+                    },
+                    {
+                        label: "買匯",
+                        pointHoverBorderColor: "#15ff0f",
+                        pointHoverBackgroundColor: "#ce27ff",
+                        pointBorderColor: "#15ff0f",
+                        pointBackgroundColor: "#15ff0f",
+                        borderColor: "#15ff0f",
+                        data: getPlotData(crawler_datas[i-1])[2]
+                    }
+                ]
+            }
         });
     }
 
