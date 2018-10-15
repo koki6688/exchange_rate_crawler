@@ -42,7 +42,6 @@
     const crawler_datas = [JSON.parse(result1), JSON.parse(result2), JSON.parse(result3)
         , JSON.parse(result4), JSON.parse(result5), JSON.parse(result6)];
 
-
     function getPlotData(crawler_data) {
         const time = [];
         const sell_rate = [];
@@ -184,7 +183,7 @@
         // Get the context of the canvas element we want to select
         const ctx = document.getElementById("myChart" + i).getContext("2d");
         // Instantiate a new chart using 'data' (defined below)
-        console.log(getPlotData(crawler_datas[i-1]));
+
         const myLineChart = new Chart(ctx, {
             type: 'line',
             data: {

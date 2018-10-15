@@ -33,7 +33,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="java-json" level="project" />
-    <orderEntry type="library" name="jackson-core-2.9.7" level="project" />
-    <orderEntry type="library" name="jackson-core-2.9.7-javadoc" level="project" />
   </component>
 </module>

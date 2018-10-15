@@ -17,7 +17,7 @@ public class crawler {
 // TODO Auto-generated method stub
         String url = "https://www.esunbank.com.tw/bank/Layouts/esunbank/Deposit/DpService.aspx/GetLineChartJson";
         String payload = "{data:{\"Currency\":\"" + currency + "\",\"Currencytype\":\"1\",\"Rangetype\":\"3\"," +
-                "\"Startdate\":\"2018-09-10\",\"Enddate\":\"2018-10-12\",\"CurrencyTitle\":\"" + currencyTitle + "\"}}";
+                "\"Startdate\":\"2018-09-16\",\"Enddate\":\"2018-10-16\",\"CurrencyTitle\":\"" + currencyTitle + "\"}}";
 
         try {
             JSONObject jsonobj = new JSONObject(sendPostRequest(url, payload));

@@ -1,11 +1,16 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="exchange_rate_crawler:war exploded">
+  <artifact type="war" build-on-make="true" name="exchange_rate_crawler:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/exchange_rate_crawler_war_exploded</output-path>
-    <root id="root">
+    <root id="archive" name="exchange_rate_crawler_war exploded.war">
       <element id="javaee-facet-resources" facet="exchange_rate_crawler/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="exchange_rate_crawler" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="java-json" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/java-json.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-core-2.9.7.jar" />
         </element>
       </element>
     </root>
